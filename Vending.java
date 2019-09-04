@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 class Stock {
 	int inStock; //
-	String[] numOfStock; // Àç°í·®
-	int price; // °¡°Ý
-	String name; // Á¦Ç°¸í
+	String[] numOfStock; // ìž¬ê³ ëŸ‰
+	int price; // ê°€ê²©
+	String name; // ì œí’ˆëª…
 
 	/* abstract */void stockMinus(int num) {
 		for (String str : numOfStock) {
@@ -25,7 +25,7 @@ class Stock {
 			}
 		}
 		if (count < 5) {
-			System.out.println("Àç°í°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ìž¬ê³ ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 	}
 
@@ -52,7 +52,7 @@ class Stock {
 	}
 
 	void show() {
-		System.out.println("°¡°ÝÀº " + price + "ÀÔ´Ï´Ù.");
+		System.out.println("ê°€ê²©ì€ " + price + "ìž…ë‹ˆë‹¤.");
 	}
 
 }
@@ -60,7 +60,7 @@ class Stock {
 class Icis extends Stock {
 
 	Icis() {
-		super(1000, "ÁÁÀº¹°");
+		super(1000, "ì¢‹ì€ë¬¼");
 
 	}
 
@@ -73,7 +73,7 @@ class Icis extends Stock {
 
 class Cabo extends Stock {
 	Cabo() {
-		super(1500, "ÁÁÀºÅº»ê¼ö");
+		super(1500, "ì¢‹ì€íƒ„ì‚°ìˆ˜");
 	}
 
 	@Override
@@ -84,7 +84,7 @@ class Cabo extends Stock {
 
 class Juice extends Stock {
 	Juice() {
-		super(1300, "ÁÁÀºÁÖ½º");
+		super(1300, "Good Juice");
 
 	}
 
@@ -96,7 +96,7 @@ class Juice extends Stock {
 
 class CanCoffee extends Stock {
 	CanCoffee() {
-		super(800, "ÄµÄ¿ÇÇ");
+		super(800, "ìº”ì»¤í”¼");
 	}
 
 	@Override
@@ -107,7 +107,7 @@ class CanCoffee extends Stock {
 
 class Sujerng extends Stock {
 	Sujerng() {
-		super(1000, "¼öÁ¤°ú");
+		super(1000, "ìˆ˜ì •ê³¼");
 	}
 
 	@Override
@@ -133,7 +133,7 @@ class Show {
 		this.money = money;
 		int change = money - s.price;
 		
-		System.out.println("ÀÜµ·Àº :" + change);	
+		System.out.println("ìž”ëˆì€ :" + change);	
 	}
 }
 
@@ -143,16 +143,16 @@ class SalesMethod {
 		int mo;
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println("2Á¶ ÀÚÆÇ±â");
+		System.out.println("2ì¡° ìžíŒê¸°");
 		
-		System.out.println("µ·À» ³Ö¾îÁÖ¼¼¿ä.");
+		System.out.println("ëˆì„ ë„£ì–´ì£¼ì„¸ìš”.");
 		mo = Integer.parseInt(scan.nextLine());
-		System.out.println("ÅõÀÔ ±Ý¾× : " + mo);
+		System.out.println("íˆ¬ìž… ê¸ˆì•¡ : " + mo);
 		
 		
-		System.out.println("»óÇ°À» ¼±ÅÃÇÏ¼¼¿ä");
-		System.out.println("1.¹°        ¦¢ 2.Åº»ê¼ö   | 3.¼öÁ¤°ú  |  4.¿À·»ÁöÁÖ½º   | 5.ÄµÄ¿ÇÇ ");
-		System.out.println("1000¿ø    ¦¢ 1500¿ø    | 1000¿ø    |  1300¿ø   	  | 800¿ø");
+		System.out.println("ìƒí’ˆì„ ì„ íƒí•˜ì„¸ìš”");
+		System.out.println("1.ë¬¼        â”‚ 2.íƒ„ì‚°ìˆ˜   | 3.ìˆ˜ì •ê³¼  |  4.ì˜¤ë Œì§€ì£¼ìŠ¤   | 5.ìº”ì»¤í”¼ ");
+		System.out.println("1000ì›    â”‚ 1500ì›    | 1000ì›    |  1300ì›   	  | 800ì›");
 		
 		int sel = Integer.parseInt(scan.nextLine());
 		Show show = new Show();
@@ -186,11 +186,11 @@ class SalesMethod {
 class Admin1 {
 	void menuAdmin(int num) {
 		if (num == 1) {
-			System.out.println("°ü¸®ÀÚ ¸ðµå ÀÔ´Ï´Ù.");
+			System.out.println("ê´€ë¦¬ìž ëª¨ë“œ ìž…ë‹ˆë‹¤.");
 		} else {
-			System.out.println("ÆÇ¸Å ¸ðµå ÀÔ´Ï´Ù.");
+			System.out.println("íŒë§¤ ëª¨ë“œ ìž…ë‹ˆë‹¤.");
 			SalesMethod m2 = new SalesMethod();
-			// µ· ¹Þ±â ÇÔ¼ö
+			// ëˆ ë°›ê¸° í•¨ìˆ˜
 			m2.menu();
 		}
 	}
@@ -202,8 +202,8 @@ public class Vending {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Admin1 a = new Admin1();
-		System.out.println("2Á¶ ÀÚÆÇ±â °ü¸® ¸Þ´º");
-		System.out.println("1.°ü¸®ÀÚ ¸ðµå    2.ÆÇ¸Å ¸ðµå ");
+		System.out.println("2ì¡° ìžíŒê¸° ê´€ë¦¬ ë©”ë‰´");
+		System.out.println("1.ê´€ë¦¬ìž ëª¨ë“œ    2.íŒë§¤ ëª¨ë“œ ");
 		int selection = sc.nextInt();
 		a.menuAdmin(selection);
 
