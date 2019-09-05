@@ -11,15 +11,32 @@ class Stock {
 		this.count = count;
 		this.price = price;
 	}
+	
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public void setprice2 (Stock s, int price) {
+		s.price = price;
+	}
+	
+	public void setprice2 (Stock s) {
+		s.price = 2000;
+	}
+	
+	
+	
 }
 class Water extends Stock {
 	Water () {
-		super ("나는 물", 10, 1000);
+		super ("나는 물", 15, 1000);
 	}
 	@Override
 	public String toString() {
 		return "[나는 물]";
 	}
+	
+	
 }
 class Cabo extends Stock {
 	Cabo () {
@@ -62,7 +79,7 @@ class CanCoffee extends Stock {
 
 class MoneyExchange {
 	Scanner scan = new Scanner(System.in);
-	static int totalSales=0;
+	int totalSales=0;
 	int inputMoney=0;
 	
 	public void inputMoneyMethod() {
@@ -171,10 +188,10 @@ public class VendingMachineSIMSMHAESEO {
 				
 				break;
 			case 2: System.out.println();
-			System.out.println("총 매출액 : " +MoneyExchange.totalSales + "원 입니다.");
+			System.out.println("총 매출액 : " +me.totalSales + "원 입니다.");
 			System.out.println();
 				break;
-			case 3: System.out.println("안녕3?");
+			case 3: // s[0].setPrice(price);
 				break;
 			case 4: machineStart(s);
 				break;
@@ -183,19 +200,6 @@ public class VendingMachineSIMSMHAESEO {
 			}
 		} while (true);
 		
-		/*do {
-			switch(displayAdmin()) {		// 여기 들어갈 함수 
-			case 1:	System.out.println("안녕1?");
-				break;
-			case 2: System.out.println(Stock.totalSales);
-				break;
-			case 3: System.out.println("안녕3?");
-				break;
-			case 4: machineStart();
-				break;
-			default : System.out.println("다시 입력하세요 -adminSelct");
-			}
-		} while (true);*/
 	}
 	
 	
@@ -214,9 +218,9 @@ public class VendingMachineSIMSMHAESEO {
 		System.out.println();
 		System.out.println();
 		System.out.println("주문할 상품의 번호를 입력하세요");
-		int userInput = Integer.parseInt(scan.nextLine());
 		
-		/*int userInput = 0;
+		
+		int userInput = 0;
 		do {
 			try {
 				userInput = Integer.parseInt(scan.nextLine());
@@ -230,7 +234,7 @@ public class VendingMachineSIMSMHAESEO {
 				System.out.println("메뉴 0~6번까지 선택");
 			}
 		} while (true);		
-		*/
+		
 		return userInput;	
 	}
 
@@ -240,8 +244,29 @@ public class VendingMachineSIMSMHAESEO {
 			System.out.println("현재 남은 금액은 "+me.inputMoney +"원 입니다.");
 			int sel = displayUser(s);
 			switch (sel) {
-			case 0: System.out.println("<<< 잔액 "+ me.inputMoney +"를 반환하였습니다. 사용해주셔서 감사합니다! >>>");
+			case 0: System.out.println("<<< 잔액 "+ me.inputMoney +"를 반환합니다. 사용해주셔서 감사합니다! >>>");
+				int unit = 10000;
+				int num;
+				int sw = 0;
+				do {
+					num = me.inputMoney / unit;
+					System.out.println(unit + "원 : " + num + "개 반환" );
+					me.inputMoney -= (unit * num);
+					//System.out.println(money);
+					if(sw == 0) {
+						sw = 1;
+						unit /= 2;
+					}else {
+						unit /= 5;
+						sw = 0;
+					}
+				}while(unit > 0);
+				 
 				me.inputMoney = 0;
+				
+				System.out.println();
+				System.out.println();
+				System.out.println();
 				me.inputMoneyMethod();
 				break;
 			case 1:
@@ -269,9 +294,8 @@ public class VendingMachineSIMSMHAESEO {
 			case 98909:
 				machineStart(s);
 			}
-			//displayUser(s);
-		} while (true); // me.inputMoney < s[4].price
-		// System.out.println("<<< 잔액 "+ me.inputMoney +"를 반환하였습니다. 사용해주셔서 감사합니다! >>>");
+			
+		} while (true); 
 	}
 	
 	
@@ -298,7 +322,7 @@ public class VendingMachineSIMSMHAESEO {
 		int sel = displayStart();
 		
 		switch (sel) {
-		case 1: adminSelect(s); //displayAdmin();
+		case 1: adminSelect(s);
 			break;
 		case 2:	userSelect(s);
 			break;
@@ -315,7 +339,7 @@ public class VendingMachineSIMSMHAESEO {
 		
 		Stock[] stock = { new Water(), new Cabo(), new Sujeong(), new Orange(), new CanCoffee() };
 		ma.machineStart(stock);
-		// ma.userSelect(stock);
+		
 		
 	}
 }
