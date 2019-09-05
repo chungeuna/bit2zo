@@ -233,6 +233,8 @@ public class VendingMachineFinal {			// 자판기 메뉴 선택 클래스
 	}
 
 	void showMenuSelection(Product[] s) {			// 자판기 상품 정보 조회 기능
+		System.out.println();
+		System.out.println("=======================================================================================================================================");
 		System.out.printf ("1. 물 [%d 개]      2. 탄산수 [%d 개]     3. 수정과 [%d 개]     4. 오렌지주스 [%d 개]  5. 캔커피 [%d 개]    6.추가 금액 입금           0. 금액 반환\n",s[0].productStockCount,s[1].productStockCount,s[2].productStockCount,s[3].productStockCount,s[4].productStockCount);
 		System.out.printf("   %4d원                     %4d원                        %4d원                        %4d원                        %4d원\n", s[0].productPrice, s[1].productPrice, s[2].productPrice, s[3].productPrice, s[4].productPrice);
 		for (int i=0; i<5; i++) {
@@ -243,6 +245,7 @@ public class VendingMachineFinal {			// 자판기 메뉴 선택 클래스
 			}
 		} 
 		System.out.println();
+		System.out.println("=======================================================================================================================================");
 	}
 	
 	int customerDisplay (Product[] s) {			// 사용자 선택화면 구현 - 예외처리
