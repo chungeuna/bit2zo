@@ -1,5 +1,3 @@
-package Exam0903;
-
 import java.util.Scanner;
 
 class Product {		// 상품 정보 클래스
