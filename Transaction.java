@@ -1,13 +1,9 @@
-package kr.or.bit;
-
 public class Transaction {
 	private String transactionDate;
 	private String transactionTime;
 	private String kind;
 	private long amount;
 	private long balance;
-	
-	
 	
 	public String getTransactionDate() {
 		return transactionDate;
@@ -40,8 +36,4 @@ public class Transaction {
 		this.balance = balance;
 	}
 	
-	
-	
-	
-
 }
