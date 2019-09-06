@@ -72,7 +72,7 @@ class Payment {			// 제품 결제 클래스
 		System.out.print("  입금할 금액을 입력하세요 : ");
 		insertMoney += Integer.parseInt(scan.nextLine());
 		if (insertMoney <0) {
-			System.out.print("금액을 잘 못 입력하였습니다.  입금할 금액을 입력하세요 : ");
+			System.out.print("금액이 잘못입력되었습니다.  입금할 금액을 입력하세요 : ");
 			insertMoney =0;
 			insertMoney += Integer.parseInt(scan.nextLine());
 		}
