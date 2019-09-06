@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class Product {		// ìƒí’ˆ ì •ë³´ í´ë˜ìŠ¤
-	final int MAX_STORAGE_COUNT = 50;		// ì¬ê³  ìµœëŒ€ ë³´ìœ ëŸ‰ ì œí•œ
+class Product {		// »óÇ° Á¤º¸ Å¬·¡½º
+	final int MAX_STORAGE_COUNT = 50;		// Àç°í ÃÖ´ë º¸À¯·® Á¦ÇÑ
 	int productStockCount;
 	int productPrice;
 	String productName;
@@ -13,91 +13,94 @@ class Product {		// ìƒí’ˆ ì •ë³´ í´ë˜ìŠ¤
 	public void setProductPrice(int productPrice) {
 		this.productPrice = productPrice;
 	}	
-	
 }
-class Water extends Product {		// 5ê°œ ìƒí’ˆì˜ ì´ˆê¸°ê°’ ì„¤ì •
+
+class Water extends Product {		// 5°³ »óÇ°ÀÇ ÃÊ±â°ª ¼³Á¤
 	Water () {
-		super ("ë‚˜ëŠ” ë¬¼", 49, 1000);
+		super ("³ª´Â ¹°", 49, 1000);
 	}
 	@Override
 	public String toString() {
-		return "[ë‚˜ëŠ” ë¬¼]";
+		return "[³ª´Â ¹°]";
 	}
 }
 class Cabo extends Product {
 	Cabo () {
-		super ("ë‚˜ëŠ” íƒ„ì‚°ìˆ˜", 40, 1500);
+		super ("³ª´Â Åº»ê¼ö", 40, 1500);
 	}
 	@Override
 	public String toString() {
-		return "[ë‚˜ëŠ” íƒ„ì‚°ìˆ˜]";
+		return "[³ª´Â Åº»ê¼ö]";
 	}
 }
 class Sujeong extends Product {
 	Sujeong () {
-		super ("ë‚˜ëŠ” ìˆ˜ì •ê³¼", 32, 1000);
+		super ("³ª´Â ¼öÁ¤°ú", 32, 1000);
 	}
 	@Override
 	public String toString() {
-		return "[ë‚˜ëŠ” ìˆ˜ì •ê³¼]";
+		return "[³ª´Â ¼öÁ¤°ú]";
 	}
 }
 class Orange extends Product {
 	Orange () {
-		super ("ë‚˜ëŠ” ì˜¤ë Œì§€ì£¼ìŠ¤", 3, 1300);
+		super ("³ª´Â ¿À·»ÁöÁÖ½º", 3, 1300);
 	}
 	@Override
 	public String toString() {
-		return "[ë‚˜ëŠ” ì˜¤ë Œì§€ì£¼ìŠ¤]";
+		return "[³ª´Â ¿À·»ÁöÁÖ½º]";
 	}
 }
 class CanCoffee extends Product {
 	CanCoffee () {
-		super ("ë‚˜ëŠ” ìº”ì»¤í”¼", 13, 800);
+		super ("³ª´Â ÄµÄ¿ÇÇ", 13, 800);
 	}
 	@Override
 	public String toString() {
-		return "[ë‚˜ëŠ” ìº”ì»¤í”¼]";
+		return "[³ª´Â ÄµÄ¿ÇÇ]";
 	}
 }
 
-class Payment {			// ì œí’ˆ ê²°ì œ í´ë˜ìŠ¤
+class Payment {			// Á¦Ç° °áÁ¦ Å¬·¡½º
 	Scanner scan = new Scanner(System.in);
+	
 	int totalSales=0;
 	int insertMoney=0;
 	
-	public void insertMoneyMethod() {			// ì…ê¸ˆ ê¸°ëŠ¥
+	public void insertMoneyMethod() {			// ÀÔ±İ ±â´É
 		System.out.println();
-		System.out.println("  ì•ˆë…•í•˜ì„¸ìš”! ");
-		System.out.print("  ì…ê¸ˆí•  ê¸ˆì•¡ì„ ì…ë ¥í•˜ì„¸ìš” : ");
+		System.out.println("  ¾È³çÇÏ¼¼¿ä! ");
+		System.out.print("  ÀÔ±İÇÒ ±İ¾×À» ÀÔ·ÂÇÏ¼¼¿ä : ");
 		insertMoney += Integer.parseInt(scan.nextLine());
 		if (insertMoney <0) {
-			System.out.print("ê¸ˆì•¡ì´ ì˜ëª»ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.  ì…ê¸ˆí•  ê¸ˆì•¡ì„ ì…ë ¥í•˜ì„¸ìš” : ");
+			System.out.print("±İ¾×À» Àß ¸ø ÀÔ·ÂÇÏ¿´½À´Ï´Ù.  ÀÔ±İÇÒ ±İ¾×À» ÀÔ·ÂÇÏ¼¼¿ä : ");
 			insertMoney =0;
 			insertMoney += Integer.parseInt(scan.nextLine());
 		}
 	}
 	
-	public void insertExtraMoneyMethod() {			// ì¶”ê°€ ì…ê¸ˆ ê¸°ëŠ¥
-		System.out.println("ì¶”ê°€ ì…ê¸ˆì„ í•˜ì‹œë ¤ë©´ ê¸ˆì•¡ì„ ì…ë ¥í•˜ì„¸ìš” (ì¶”ê°€ì…ê¸ˆì„ ì›ì¹˜ ì•Šìœ¼ì‹ ë‹¤ë©´ 0ì„ ì…ë ¥í•´ì£¼ì„¸ìš”) : ");
+	public void insertExtraMoneyMethod() {			// Ãß°¡ ÀÔ±İ ±â´É
+		System.out.println("Ãß°¡ ÀÔ±İÀ» ÇÏ½Ã·Á¸é ±İ¾×À» ÀÔ·ÂÇÏ¼¼¿ä (Ãß°¡ÀÔ±İÀ» ¿øÄ¡ ¾ÊÀ¸½Å´Ù¸é 0À» ÀÔ·ÂÇØÁÖ¼¼¿ä) : ");
 		insertMoney += Integer.parseInt(scan.nextLine());
 		if (insertMoney <0) {
-			System.out.print("ê¸ˆì•¡ì„ ì˜ ëª» ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.  ì…ê¸ˆí•  ê¸ˆì•¡ì„ ì…ë ¥í•˜ì„¸ìš” : ");
+			System.out.print("±İ¾×À» Àß ¸ø ÀÔ·ÂÇÏ¿´½À´Ï´Ù.  ÀÔ±İÇÒ ±İ¾×À» ÀÔ·ÂÇÏ¼¼¿ä : ");
 			insertMoney =0;
 			insertMoney += Integer.parseInt(scan.nextLine());
 		}
 	}
 	
-	void payMoney (Product s) {			// ê²°ì œ ë° ì”ëˆ ë°˜í™˜ ê¸°ëŠ¥
-		if (s.productStockCount <= 0) {			// í’ˆì ˆìƒí™© ì•Œë¦¼
+	void payMoney (Product s) {			// °áÁ¦ ¹× ÀÜ¾× È®ÀÎ ±â´É
+		if (s.productStockCount <= 0) {			// Ç°Àı»óÈ² ¾Ë¸²
 			System.out.println();
-			System.out.println("!!! í’ˆì ˆì…ë‹ˆë‹¤. ë‹¤ë¥¸ ìƒí’ˆì„ ì„ íƒí•˜ì„¸ìš” !!!");
+			System.out.println("!!! Ç°ÀıÀÔ´Ï´Ù. ´Ù¸¥ »óÇ°À» ¼±ÅÃÇÏ¼¼¿ä !!!");
 			System.out.println();
-		} else if (insertMoney < s.productPrice) {			// ì”ì•¡ ë¶€ì¡±ìƒí™© ì•Œë¦¼
+		} else if (insertMoney < s.productPrice) {			// ÀÜ¾× ºÎÁ·»óÈ² ¾Ë¸²
 			System.out.println();
-			System.out.println("!!! ìƒí’ˆì„ êµ¬ë§¤í•˜ê¸° ìœ„í•œ ì”ì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤ !!!");
+			System.out.println("!!! »óÇ°À» ±¸¸ÅÇÏ±â À§ÇÑ ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù !!!");
 			System.out.println();
-		} else {
+		} else {		// ÀÜ¾× °è»ê
+			System.out.println();
+			System.out.println("< " + s.productName+"À» ¼±ÅÃÇß½À´Ï´Ù.  °¡°İÀº " + s.productPrice +"¿ø ÀÔ´Ï´Ù >");
 			this.insertMoney -= s.productPrice;
 			s.productStockCount--;
 			totalSales += s.productPrice;
@@ -105,17 +108,38 @@ class Payment {			// ì œí’ˆ ê²°ì œ í´ë˜ìŠ¤
 		}
 	}
 	
+	void returnUnitMoney () {		// ÀÜ¾× ±ÇÁ¾º° ¹İÈ¯ ¹× ÀÔ±İ¾× ÃÊ±âÈ­ ±â´É
+		System.out.println("< ÀÜ¾× "+ insertMoney +"¿øÀ» ¹İÈ¯ÇÕ´Ï´Ù. »ç¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù! >");
+		int unit = 10000;
+		int num;
+		int sw = 0;
+		do {
+			num = insertMoney / unit;
+			System.out.printf("%6d ¿ø : %4d°³ ¹İÈ¯\n", unit, num );
+			insertMoney -= (unit * num);
+			if(sw == 0) {
+				sw = 1;
+				unit /= 2;
+			}else {
+				unit /= 5;
+				sw = 0;
+			}
+		}while((insertMoney%100==0) ? unit>=100 : unit>=0);		// 100¿ø ´ÜÀ§ Á¸Àç ¿©ºÎ¿¡ µû¸¥ ¼±ÅÃÀû Ãâ·Â
+		System.out.println();
+		System.out.println();	
+		insertMoney = 0;
+	}
 }
 
-public class VendingMachineFinal {			// ìíŒê¸° ë©”ë‰´ ì„ íƒ í´ë˜ìŠ¤
+public class VendingMachineFinal {			// ÀÚÆÇ±â ¸Ş´º ¼±ÅÃ Å¬·¡½º
 	Scanner scan = new Scanner(System.in);
 	Payment pay = new Payment();
 	VendingMachineFinal () {
-		System.out.println("ìíŒê¸° ê°€ë™");
+		System.out.println("ÀÚÆÇ±â °¡µ¿");
 	}
 
-	int displayStart () {			// ì´ˆê¸° ì„ íƒí™”ë©´ êµ¬í˜„ - ì˜ˆì™¸ì²˜ë¦¬
-		System.out.println("1. ê´€ë¦¬ìëª¨ë“œ		 2.ì‚¬ìš©ìëª¨ë“œ		 3. ì‹œìŠ¤í…œ ì¢…ë£Œ");
+	int displayStart () {			// ÃÊ±â ¼±ÅÃÈ­¸é ±¸Çö - ¿¹¿ÜÃ³¸®
+		System.out.println("1. °ü¸®ÀÚ¸ğµå		 2.»ç¿ëÀÚ¸ğµå		 3. ½Ã½ºÅÛ Á¾·á");
 		int userinput = 0;
 		do {
 			try {
@@ -123,17 +147,17 @@ public class VendingMachineFinal {			// ìíŒê¸° ë©”ë‰´ ì„ íƒ í´ë˜ìŠ¤
 				if (userinput >= 1 && userinput <=3) {
 					break;		
 				} else {
-					throw new Exception("ì„ íƒ ë¬¸ì œ ë°œìƒ");
+					throw new Exception("¼±ÅÃ ¹®Á¦ ¹ß»ı");
 				}
 			} catch (Exception e) {
-				System.out.println("ê°€ë™ ë©”ë‰´ ì„ íƒ ë¬¸ì œ");
-				System.out.println("ê°€ë™ ë©”ë‰´ 1~3ë²ˆê¹Œì§€ ì„ íƒ");
+				System.out.println("°¡µ¿ ¸Ş´º ¼±ÅÃ ¹®Á¦");
+				System.out.println("°¡µ¿ ¸Ş´º 1~3¹ø±îÁö ¼±ÅÃ");
 			}
 		} while (true);		
 		return userinput;	
 	}
 	
-	void machineStart (Product[] s) {			// ì´ˆê¸° ì„ íƒí™”ë©´ êµ¬í˜„
+	void machineStart (Product[] s) {			// ÃÊ±â ¼±ÅÃÈ­¸é ±¸Çö
 		int sel = displayStart();
 		switch (sel) {
 		case 1: adminSelect(s);
@@ -141,13 +165,13 @@ public class VendingMachineFinal {			// ìíŒê¸° ë©”ë‰´ ì„ íƒ í´ë˜ìŠ¤
 		case 2:	customerSelect(s);
 			break;
 		default : 
-			System.out.println("ìíŒê¸° í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤");
+			System.out.println("ÀÚÆÇ±â ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù");
 			System.exit(0);	
 		}
 	}
 	
-	int adminDisplay () {			// ê´€ë¦¬ì ì„ íƒí™”ë©´ êµ¬í˜„ - ì˜ˆì™¸ì²˜ë¦¬
-		System.out.println("1. ì¬ê³ í™•ì¸                    2. ë§¤ì¶œ í™•ì¸                   3.ê°€ê²©ë³€ê²½                   4. ë’¤ë¡œê°€ê¸°");
+	int adminDisplay () {			// °ü¸®ÀÚ ¼±ÅÃÈ­¸é ±¸Çö - ¿¹¿ÜÃ³¸®
+		System.out.println("1. Àç°íÈ®ÀÎ                    2. ¸ÅÃâ È®ÀÎ                   3.°¡°İº¯°æ                   4. µÚ·Î°¡±â");
 		int userinput = 0;
 		do {
 			try {
@@ -155,187 +179,127 @@ public class VendingMachineFinal {			// ìíŒê¸° ë©”ë‰´ ì„ íƒ í´ë˜ìŠ¤
 				if (userinput >= 1 && userinput <=4) {
 					break;		
 				} else {
-					throw new Exception("ì„ íƒ ë¬¸ì œ ë°œìƒ");
+					throw new Exception("¼±ÅÃ ¹®Á¦ ¹ß»ı");
 				}
 			} catch (Exception e) {
-				System.out.println("ê´€ë¦¬ì ë©”ë‰´ ì„ íƒ ë¬¸ì œ");
-				System.out.println("ê´€ë¦¬ì ë©”ë‰´ 1~4ë²ˆê¹Œì§€ ì„ íƒ");
+				System.out.println("°ü¸®ÀÚ ¸Ş´º ¼±ÅÃ ¹®Á¦");
+				System.out.println("°ü¸®ÀÚ ¸Ş´º 1~4¹ø±îÁö ¼±ÅÃ");
 			}
 		} while (true);		
 		return userinput;	
 	}
 	
-	void adminSelect (Product[] s) {			// ê´€ë¦¬ì ì„ íƒí™”ë©´ êµ¬í˜„
+	void adminSelect (Product[] s) {			// °ü¸®ÀÚ ¼±ÅÃÈ­¸é ±¸Çö
 		do {
 			int sel = adminDisplay();
 			switch (sel) {
-			case 1: 			// ì¬ê³  ìƒí™© ê·¸ë˜í”„ ì¶œë ¥
-				for (int i=0;i<s[0].productStockCount; i++) {
-					System.out.print("â–  ");
-				}
-				for (int i=s[0].productStockCount; i<s[0].MAX_STORAGE_COUNT; i++) {
-					System.out.print("â–¡ ");
-				}
-				System.out.printf("[%sê°œ ë‚¨ìŒ   %s]\n", s[0].productStockCount, s[0].productName);
-				System.out.println();
-				for (int i=0;i<s[1].productStockCount; i++) {
-					System.out.print("â–  ");
-				}
-				for (int i=s[1].productStockCount; i<s[1].MAX_STORAGE_COUNT; i++) {
-					System.out.print("â–¡ ");
-				}
-				System.out.printf("[%sê°œ ë‚¨ìŒ    %s]\n", s[1].productStockCount, s[1].productName);
-				System.out.println();
-				for (int i=0;i<s[2].productStockCount; i++) {
-					System.out.print("â–  ");
-				}
-				for (int i=s[2].productStockCount; i<s[2].MAX_STORAGE_COUNT; i++) {
-					System.out.print("â–¡ ");
-				}
-				System.out.printf("[%sê°œ ë‚¨ìŒ    %s]\n", s[2].productStockCount, s[2].productName);
-				System.out.println();
-				for (int i=0;i<s[3].productStockCount; i++) {
-					System.out.print("â–  ");
-				}
-				for (int i=s[3].productStockCount; i<s[3].MAX_STORAGE_COUNT; i++) {
-					System.out.print("â–¡ ");
-				}
-				System.out.printf("[%sê°œ ë‚¨ìŒ    %s]\n", s[3].productStockCount, s[3].productName);
-				System.out.println();
-				for (int i=0;i<s[4].productStockCount; i++) {
-					System.out.print("â–  ");
-				}
-				for (int i=s[4].productStockCount; i<s[4].MAX_STORAGE_COUNT; i++) {
-					System.out.print("â–¡ ");
-				}System.out.printf("[%sê°œ ë‚¨ìŒ    %s]\n", s[4].productStockCount, s[4].productName);
-				System.out.println();
+			case 1: 			// Àç°í »óÈ² ±×·¡ÇÁ Ãâ·Â
+				for (int j=0; j<s.length; j++) {
+					for (int i=0;i<s[j].productStockCount; i++) {
+						System.out.print("¡á ");
+					}
+					for (int i=s[j].productStockCount; i<s[j].MAX_STORAGE_COUNT; i++) {
+						System.out.print("¡à ");
+					}
+					System.out.printf("[%s°³ ³²À½   %s]\n", s[j].productStockCount, s[j].productName);
+					System.out.println();
+				}	
 				break;
-			case 2: 			// ì´ ë§¤ì¶œì•¡ ì¡°íšŒ
-				System.out.println("ì´ ë§¤ì¶œì•¡ : " +pay.totalSales + "ì› ì…ë‹ˆë‹¤.");
+			case 2: 			// ÃÑ ¸ÅÃâ¾× Á¶È¸
+				System.out.println("ÃÑ ¸ÅÃâ¾× : " +pay.totalSales + "¿ø ÀÔ´Ï´Ù.");
 				System.out.println();
 				break;
 			case 3:
-				changePrice(s);			// ìƒí’ˆ ê°€ê²© ë³€ê²½ ê¸°ëŠ¥ í˜¸ì¶œ
+				changePrice(s);			// »óÇ° °¡°İ º¯°æ ±â´É È£Ãâ
 				break;
-			case 4: machineStart(s);			// ì´ˆê¸° ì„ íƒë©”ë‰´ë¡œ ë³µê·€
+			case 4: machineStart(s);			// ÃÊ±â ¼±ÅÃ¸Ş´º·Î º¹±Í
 				break;
 			default :	
 			}
 		} while (true);
 	}
 	
-	void changePrice (Product[] s) {			// ìƒí’ˆ ê°€ê²© ë³€ê²½ ê¸°ëŠ¥
+	void changePrice (Product[] s) {			// »óÇ° °¡°İ º¯°æ ±â´É
 		showMenuSelection(s);
-		System.out.println("ê°€ê²©ì„ ë³€ê²½í•  ìƒí’ˆì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
+		System.out.println("°¡°İÀ» º¯°æÇÒ »óÇ°ÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
 		int userinput = (Integer.parseInt(scan.nextLine())-1);
-		System.out.println("ê°€ê²©ì„ ë³€ê²½í•  ìƒí’ˆì˜ ê°€ê²©ì„ ì…ë ¥í•˜ì„¸ìš” : ");
+		System.out.println("°¡°İÀ» º¯°æÇÒ »óÇ°ÀÇ °¡°İÀ» ÀÔ·ÂÇÏ¼¼¿ä : ");
 		s[userinput].setProductPrice(Integer.parseInt(scan.nextLine()));
 	}
 
-	void showMenuSelection(Product[] s) {			// ìíŒê¸° ìƒí’ˆ ì •ë³´ ì¡°íšŒ ê¸°ëŠ¥
+	void showMenuSelection(Product[] s) {			// ÀÚÆÇ±â »óÇ° Á¤º¸ Á¶È¸ ±â´É
 		System.out.println();
 		System.out.println("=======================================================================================================================================");
-		System.out.printf ("1. ë¬¼ [%d ê°œ]      2. íƒ„ì‚°ìˆ˜ [%d ê°œ]     3. ìˆ˜ì •ê³¼ [%d ê°œ]     4. ì˜¤ë Œì§€ì£¼ìŠ¤ [%d ê°œ]  5. ìº”ì»¤í”¼ [%d ê°œ]    6.ì¶”ê°€ ê¸ˆì•¡ ì…ê¸ˆ           0. ê¸ˆì•¡ ë°˜í™˜\n",s[0].productStockCount,s[1].productStockCount,s[2].productStockCount,s[3].productStockCount,s[4].productStockCount);
-		System.out.printf("   %4dì›                     %4dì›                        %4dì›                        %4dì›                        %4dì›\n", s[0].productPrice, s[1].productPrice, s[2].productPrice, s[3].productPrice, s[4].productPrice);
+		System.out.printf ("1. ¹° [%d °³]      2. Åº»ê¼ö [%d °³]     3. ¼öÁ¤°ú [%d °³]     4. ¿À·»ÁöÁÖ½º [%d °³]  5. ÄµÄ¿ÇÇ [%d °³]    6.Ãß°¡ ±İ¾× ÀÔ±İ           0. ±İ¾× ¹İÈ¯\n",s[0].productStockCount,s[1].productStockCount,s[2].productStockCount,s[3].productStockCount,s[4].productStockCount);
+		System.out.printf("   %4d¿ø                     %4d¿ø                        %4d¿ø                        %4d¿ø                        %4d¿ø\n", s[0].productPrice, s[1].productPrice, s[2].productPrice, s[3].productPrice, s[4].productPrice);
 		for (int i=0; i<5; i++) {
 			if (s[i].productStockCount <=0) {
-		  System.out.print("   [í’ˆì ˆ]          ");
+		  System.out.print("   [Ç°Àı]          ");
 			} else {
-		  System.out.print("   [ì¬ê³  ìˆìŒ]       ");
+		  System.out.print("   [Àç°í ÀÖÀ½]       ");
 			}
 		} 
 		System.out.println();
 		System.out.println("=======================================================================================================================================");
+		System.out.println();
 	}
 	
-	int customerDisplay (Product[] s) {			// ì‚¬ìš©ì ì„ íƒí™”ë©´ êµ¬í˜„ - ì˜ˆì™¸ì²˜ë¦¬
+	int customerDisplay (Product[] s) {			// »ç¿ëÀÚ ¼±ÅÃÈ­¸é ±¸Çö - ¿¹¿ÜÃ³¸®
 		showMenuSelection(s);
 		System.out.println();
-		System.out.println("ì£¼ë¬¸í•  ìƒí’ˆì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+		System.out.println("ÁÖ¹®ÇÒ »óÇ°ÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
 			
 		int userinput = 0;
 		do {
 			try {
 				userinput = Integer.parseInt(scan.nextLine());
-				if (userinput == 98909  || userinput >= 0 && userinput <=6) {			// 98909 : ê´€ë¦¬ì ëª¨ë“œ ì§„ì…ì„ ìœ„í•œ ì…ë ¥ê°’
+				if (userinput == 98909  || userinput >= 0 && userinput <=6) {			// 98909 : °ü¸®ÀÚ ¸ğµå ÁøÀÔÀ» À§ÇÑ ÀÔ·Â°ª
 					break;		
 				} else {
-					throw new Exception("ì„ íƒ ë¬¸ì œ ë°œìƒ");
+					throw new Exception("¼±ÅÃ ¹®Á¦ ¹ß»ı");
 				}
 			} catch (Exception e) {
-				System.out.println("ë©”ë‰´ ì„ íƒ ë¬¸ì œ");
-				System.out.println("ë©”ë‰´ 0~6ë²ˆê¹Œì§€ ì„ íƒ");
+				System.out.println("¸Ş´º ¼±ÅÃ ¹®Á¦");
+				System.out.println("¸Ş´º 0~6¹ø±îÁö ¼±ÅÃ");
 			}
 		} while (true);		
 		
 		return userinput;	
 	}
 
-	void customerSelect (Product[] s) {			// ì‚¬ìš©ì ì„ íƒí™”ë©´ êµ¬í˜„
+	void customerSelect (Product[] s) {			// »ç¿ëÀÚ ¼±ÅÃÈ­¸é ±¸Çö
 		showMenuSelection(s);
 		pay.insertMoneyMethod();
 		do {
-			System.out.println("í˜„ì¬ ë‚¨ì€ ê¸ˆì•¡ì€ "+pay.insertMoney +"ì› ì…ë‹ˆë‹¤.");
+			System.out.println("ÇöÀç ³²Àº ±İ¾×Àº "+pay.insertMoney +"¿ø ÀÔ´Ï´Ù.");
 			int sel = customerDisplay(s);
 			switch (sel) {
-			case 0: 			// ë‚¨ì€ ê¸ˆì•¡ ê¶Œì¢…ë³„ ë°˜í™˜
-				System.out.println("< ì”ì•¡ "+ pay.insertMoney +"ì›ì„ ë°˜í™˜í•©ë‹ˆë‹¤. ì‚¬ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤! >");
-				int unit = 10000;
-				int num;
-				int sw = 0;
-				do {
-					num = pay.insertMoney / unit;
-					System.out.printf("%6d ì› : %4dê°œ ë°˜í™˜\n", unit, num );
-					pay.insertMoney -= (unit * num);
-					if(sw == 0) {
-						sw = 1;
-						unit /= 2;
-					}else {
-						unit /= 5;
-						sw = 0;
-					}
-				}while((pay.insertMoney%100==0) ? unit>=100 : unit>=0);		// 100ì› ë‹¨ìœ„ ì¡´ì¬ ì—¬ë¶€ì— ë”°ë¥¸ ì„ íƒì  ì¶œë ¥
-				 
-				pay.insertMoney = 0;
-
-				System.out.println();
-				System.out.println();
+			case 0: pay.returnUnitMoney();		// ÀÜ¾× ¹İÈ¯ ¹× ÃÊ±âÈ­ ±â´É È£Ãâ
+				
 				showMenuSelection(s);
 				pay.insertMoneyMethod();
 				break;
-			case 1:
-				System.out.println("< " + s[0].toString()+"ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤.  ê°€ê²©ì€ " + s[0].productPrice +"ì› ì…ë‹ˆë‹¤ >");
-				pay.payMoney(s[0]);
+			case 1:	pay.payMoney(s[0]);
 				break;
-			case 2:
-				System.out.println("< " + s[1].toString()+"ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤. ê°€ê²©ì€ " + s[1].productPrice +"ì› ì…ë‹ˆë‹¤ >");
-				pay.payMoney(s[1]);
+			case 2:	pay.payMoney(s[1]);
 				break;
-			case 3:
-				System.out.println("< " + s[2].toString()+"ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤. ê°€ê²©ì€ " + s[2].productPrice +"ì› ì…ë‹ˆë‹¤ >");
-				pay.payMoney(s[2]);
+			case 3:	pay.payMoney(s[2]);
 				break;
-			case 4:
-				System.out.println("< " + s[3].toString()+"ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤. ê°€ê²©ì€ " + s[3].productPrice +"ì› ì…ë‹ˆë‹¤ >");
-				pay.payMoney(s[3]);
+			case 4:	pay.payMoney(s[3]);
 				break;
-			case 5:
-				System.out.println("< " + s[3].toString()+"ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤. ê°€ê²©ì€ " + s[4].productPrice +"ì› ì…ë‹ˆë‹¤ >");
-				pay.payMoney(s[4]);
+			case 5:	pay.payMoney(s[4]);
 				break;
-			case 6:
-				pay.insertExtraMoneyMethod();			// ì¶”ê°€ ì…ê¸ˆ ê¸°ëŠ¥ í˜¸ì¶œ
+			case 6: pay.insertExtraMoneyMethod();			// Ãß°¡ ÀÔ±İ ±â´É È£Ãâ
 				break;
-			case 98909:			// ê´€ë¦¬ì ì„ íƒí™”ë©´ í˜¸ì¶œ
-				machineStart(s);
+			case 98909:	machineStart(s);		// 98909 ÀÔ·Â ½Ã °ü¸®ÀÚ ¼±ÅÃÈ­¸é È£Ãâ
 			}
 		} while (true); 
 	}
 	
 	public static void main(String[] args) {
 		
-		VendingMachineFinal vm = new VendingMachineFinal();			// ìíŒê¸° ì´ˆê¸°í™”
-		Product[] stock = { new Water(), new Cabo(), new Sujeong(), new Orange(), new CanCoffee() };			// ê°ì²´ë³„ ì£¼ì†Œê°’ í• ë‹¹
+		VendingMachineFinal vm = new VendingMachineFinal();			// ÀÚÆÇ±â ÃÊ±âÈ­
+		Product[] stock = { new Water(), new Cabo(), new Sujeong(), new Orange(), new CanCoffee() };			// °´Ã¼º° ÁÖ¼Ò°ª ÇÒ´ç
 		
 		vm.machineStart(stock);
 	}
