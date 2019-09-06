@@ -30,7 +30,7 @@ public class Bank{
 	}
 	Account getAccount(String accountNo) { //계좌번호로 계좌를 찾는다 
 		for(Account account : accounts) {
-			if(account.getAccountNo() == accountNo) {
+			if(account.getAccountNo().equals(accountNo)) {
 				System.out.println(getAccounts());
 			}
 		}
@@ -44,7 +44,7 @@ public class Bank{
 				
 		}*/
 		for(int i = 0; i < accounts.size() ; i++) {
-			if(accounts.get(i).getName() == name) {
+			if(accounts.get(i).getName().equals(name)) {
 				//list.add(getAccounts());
 				list.add(accounts.get(i));
 				list.get(i).getAccountNo();
