@@ -61,6 +61,8 @@ public class Account {
 	}
 	
 	public Account(String accountNo, String name) {
+		this.accountNo = accountNo;
+		this.name = name;
 		
 	}
 
@@ -121,5 +123,13 @@ public class Account {
 
 
 	}
+
+	@Override
+	public String toString() {
+		return "Account [accountNo=" + accountNo + ", name=" + name + ", balance=" + balance + ", transaction="
+				+ transaction + ", index=" + index + "]";
+	}
+	
+	
 
 }
