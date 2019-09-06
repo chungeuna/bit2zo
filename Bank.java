@@ -36,7 +36,7 @@ public class Bank{
 		}
 		return null; //수정해야한다 
 	}
-	Account[] findAccounts(String name) { //함수안에 제너릭 하나 더 만들고 그 주소값을 리턴   //소유자명으로 계좌를 찾는다 
+	ArrayList<Account> findAccounts(String name) { //함수안에 제너릭 하나 더 만들고 그 주소값을 리턴   //소유자명으로 계좌를 찾는다 
 		ArrayList<Account> list = new ArrayList<Account>(); // 일단 account[]를 넣어보았다... 
 ;		/*for(Account account : accounts) {
 			if(account.getName() == name) {
@@ -49,12 +49,12 @@ public class Bank{
 				list.add(accounts.get(i));
 				list.get(i).getAccountNo();
 				//list.add(i); 
-				return null;
 			}
+			return list;
 		}
-		return ; //수정 무엇을 리턴할까 		
+		return null; //수정 무엇을 리턴할까 		
 	}
-	Account[] getAccounts() { //계좌 목록을 본다 
+	Account getAccounts() { //계좌 목록을 본다 
 		for(Account account : accounts) {
 			System.out.println(account);
 		}
