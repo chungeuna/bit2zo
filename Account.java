@@ -1,26 +1,27 @@
 /*
-°èÁÂ´Â ¼ÒÀ¯ÀÚ¸í, °èÁÂ¹øÈ£, ÀÜ°í·Î ±¸¼ºµÈ´Ù.
-°èÁÂ´Â ÀÔ±İ,Ãâ±İ ±â´É°ú ÀÜ°íÈ®ÀÎ ±â´ÉÀÌ ÀÖ´Ù.
-°èÁÂ¿¡¼­ ÀÜ¾×ÀÇ º¯È­°¡ ÀÖÀ» ¶§¸¶´Ù ÀÔÃâ±İ ¸í¼¼¿¡ ±â·ÏµÈ´Ù.
+ê³„ì¢ŒëŠ” ì†Œìœ ìëª…, ê³„ì¢Œë²ˆí˜¸, ì”ê³ ë¡œ êµ¬ì„±ëœë‹¤.
+ê³„ì¢ŒëŠ” ì…ê¸ˆ,ì¶œê¸ˆ ê¸°ëŠ¥ê³¼ ì”ê³ í™•ì¸ ê¸°ëŠ¥ì´ ìˆë‹¤.
+ê³„ì¢Œì—ì„œ ì”ì•¡ì˜ ë³€í™”ê°€ ìˆì„ ë•Œë§ˆë‹¤ ì…ì¶œê¸ˆ ëª…ì„¸ì— ê¸°ë¡ëœë‹¤.
  */
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
 public class Account {
-	private ArrayList<Transaction> transaction; 
+	private ArrayList<Transaction> tranList; 
 	private String accountNo;
 	private String name;
 	private long balance;
 	private int index;
 
-	Account() {
-		transaction = new ArrayList<Transaction>();
-		int index = 0;	
-	}
+	
 
 	Account(String accountNo, String name) {
+		
 		this.accountNo = accountNo;
 		this.name = name;	
+		tranList = new ArrayList<Transaction>();
+		int index = 0;	
 	}
 	
 	public String getAccountNo() {
@@ -32,72 +33,52 @@ public class Account {
 	}
 
 	public void deposit(long amount) {			// 1
-		Calendar cal = Calendar.getInstance();
-		Date dat = new Date();
-		transaction.add(new Transaction());
-		transaction.get(index).setAmount(amount);
+		
+		
+		tranList.add(new Transaction("Deposit"));
+		tranList.get(index).setAmount(amount);
 		balance += amount;
-		transaction.get(index).setBalance(balance);
-		transaction.get(index).setTransactionDate(dat.DateString(cal));
-		transaction.get(index).setTransactionTime(dat.TimeString(cal));	
+		tranList.get(index).setBalance(balance);
+			
 		index++;
 	}
 	
-	public void withdraw(long amount) {			// 2
-		Calendar cal = Calendar.getInstance();
-		Date dat = new Date();
-		transaction.add(new Transaction());
-		transaction.get(index).setAmount(amount);
-		balance -= amount;
-		transaction.get(index).setBalance(balance);
-		transaction.get(index).setTransactionDate(dat.DateString(cal));
-		transaction.get(index).setTransactionTime(dat.TimeString(cal));
+	public void withdraw(long amount) {	
+		if (this.balance < amount) {
+			System.out.println("ì”ì•¡ë¶€ì¡±");// 2
+		}else {
+			tranList.add(new Transaction("Withdraw"));
+			tranList.get(index).setAmount(amount);
+			balance -= amount;
+			tranList.get(index).setBalance(balance);
+		}
+		
+		
+		
 		index++;
 	}
 	
 	public long getBalance() {			// 3
-		return balance;
+		return this.balance;
 	}
 	
-	public ArrayList getTransactions() {		//4
-		ArrayList example = new ArrayList();
-		for(Transaction tr : transaction) {
+	public ArrayList<Transaction> getTransactions() {
+		return tranList;
+		//4
+		/*ArrayList example = new ArrayList();
+		for(Transaction tr : tranList) {
 			example.add(tr.getTransactionDate());
 			example.add(tr.getTransactionTime());
 			example.add(tr.getAmount());
 			example.add(tr.getBalance());
-		}
-		return example;
+		} */
+		
 	}
 
 	@Override
 	public String toString() {
-		return "Account [accountNo=" + accountNo + ", name=" + name + ", balance=" + balance + ", transaction="
-				+ transaction+"]\n";	
+		return "Account [accountNo=" + accountNo + ", name=" + name + ", balance=" + balance + "]\n";	
 	}
 }
 
-class Date {
-	public static String DateString(Calendar date) {
-		return date.get(Calendar.YEAR) + "³â"
-				+ (date.get(Calendar.MONTH)+1) + "¿ù"
-				+ date.get(Calendar.DATE) + "ÀÏ";	
-	}
-	
-	public static String DateString(Calendar date, String opr) {
-		return date.get(Calendar.YEAR) + opr
-				+ (date.get(Calendar.MONTH)+1) + opr
-				+date.get(Calendar.DATE);
-	}
-	
-	public static String monthFormat_DateString(Calendar date) {
-		return null;
-	}
-	
-	public static String TimeString(Calendar time) {
-		return time.get(Calendar.HOUR) + ":"
-				+ time.get(Calendar.MINUTE) + ":"
-				+time.get(Calendar.SECOND);
-	}
-}
 

@@ -1,17 +1,38 @@
 import java.util.ArrayList;
 
-public class Bank{
-	private ArrayList<Account> accounts = new ArrayList<Account>();
+public class Bank {
+	private ArrayList<Account> accounts; 
 	private int totalAccount;
 	
-	void addAccount(String accountNo, String name) { //°èÁÂ¸¦ »ı¼ºÇÑ´Ù 		// 1
-		accounts.add(new Account(accountNo,name));	
+	
+	
+	
+	
+	public Bank() {
+		
+		this.accounts = new ArrayList<Account>();
+	}
+
+
+	void addAccount(String accountNo, String name) { //ê³„ì¢Œë¥¼ ìƒì„±í•œë‹¤ 		// 1
+		/*for (Account macc : accounts) {
+			if(macc.getName().equals("accountNo")) {
+				System.out.println("Identical Acc exist, Try Again");
+				return;
+			}else {
+				accounts.add(new Account(accountNo,name));
+			}
+		} */
+		
+		
+		accounts.add(new Account(accountNo,name));
+			
 		totalAccount++;
 	}
 
 	
 	Account getAccount(String accountNo) {		// 2
-		int index2 = 0;//°èÁÂ¹øÈ£·Î °èÁÂ¸¦ Ã£´Â´Ù 
+		int index2 = 0;//ê³„ì¢Œë²ˆí˜¸ë¡œ ê³„ì¢Œë¥¼ ì°¾ëŠ”ë‹¤ 
 		//ArrayList<Account> acc = new ArrayList<Account>();
 		
 		for(int i=0; i<accounts.size(); i++) {
@@ -19,25 +40,25 @@ public class Bank{
 				index2 = i;		
 			} 
 		}	
-		return accounts.get(index2); //¼öÁ¤ÇØ¾ßÇÑ´Ù 
+		return accounts.get(index2); //ìˆ˜ì •í•´ì•¼í•œë‹¤ 
 	}
 	
-	ArrayList<Account> findAccounts(String name) { //ÇÔ¼ö¾È¿¡ Á¦³Ê¸¯ ÇÏ³ª ´õ ¸¸µé°í ±× ÁÖ¼Ò°ªÀ» ¸®ÅÏ   //¼ÒÀ¯ÀÚ¸íÀ¸·Î °èÁÂ¸¦ Ã£´Â´Ù 		// 3
+	ArrayList<Account> findAccounts(String name) { //í•¨ìˆ˜ì•ˆì— ì œë„ˆë¦­ í•˜ë‚˜ ë” ë§Œë“¤ê³  ê·¸ ì£¼ì†Œê°’ì„ ë¦¬í„´   //ì†Œìœ ìëª…ìœ¼ë¡œ ê³„ì¢Œë¥¼ ì°¾ëŠ”ë‹¤ 		// 3
 		ArrayList<Account> list = new ArrayList<Account>(); 
 
-		for(int i = 0; i < accounts.size() ; i++) {
-			if(accounts.get(i).getName().equals(name)) {			
-				list.add(accounts.get(i));			
+		for(Account myAcc : accounts) {
+			if(myAcc.getName().equals(name)) {			
+				list.add(myAcc);			
 			}		
 		}
-		return list; //¼öÁ¤ ¹«¾ùÀ» ¸®ÅÏÇÒ±î 		
+		return list; //ìˆ˜ì • ë¬´ì—‡ì„ ë¦¬í„´í• ê¹Œ 		
 	}
 	
-	ArrayList <Account> getAccounts() { //°èÁÂ ¸ñ·ÏÀ» º»´Ù 			// 4
+	ArrayList <Account> getAccounts() { //ê³„ì¢Œ ëª©ë¡ì„ ë³¸ë‹¤ 			// 4
 			return accounts;	
 	}
 	
-	int getTotalAccount() { //ÃÑ°èÁÂ¼ö¸¦ ¹İÈ¯ÇÑ´Ù 		//5
+	int getTotalAccount() { //ì´ê³„ì¢Œìˆ˜ë¥¼ ë°˜í™˜í•œë‹¤ 		//5
 		return totalAccount;
 	}
 	
@@ -47,13 +68,25 @@ public class Bank{
 	}
 	
 	/*
-	void print(Account acct) {
+	public void print(Account acct) {
 		acct.toString();
 	}
-	
+	/*
 	void myprint() {
 		System.out.println(accounts.toString());
 	}
-	*/
+
 	
+	*/
+	public void printAccList (ArrayList <Account> alist) {
+		for(Account myAcc : alist) {
+			System.out.println(myAcc);
+		}
+	}
+	public void printTranList (ArrayList <Transaction> alist) {
+		for(Transaction myAcc : alist) {
+			System.out.println(myAcc);
+		}
+	}
+
 }
