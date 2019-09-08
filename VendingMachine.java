@@ -24,18 +24,6 @@ class Drink {
 	public String toString() { //override 여러번 할 필요 없이 한줄로 다 적어줌
 		return this.productName + "(" + this.price + ") : " + this.count;
 	}
-	public int getCount() {
-		return count;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	} 
 }
 
 class Water extends Drink {
@@ -82,7 +70,7 @@ class DrinkManager {
 
 	public void addStock(String productName, int amount) {
 		if (findDrinkByType(productName).getCount() >= Drink.MAX_COUNT) {
-			System.out.println("Stock is full");
+			System.out.println("The stock is full");
 		}else {
 			this.findDrinkByType(productName).setCount(findDrinkByType(productName).getCount() + amount);// += amount;
 		}
