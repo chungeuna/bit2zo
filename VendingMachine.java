@@ -21,7 +21,7 @@ class Drink {
 		}
 	}
 
-	public String toString() { //override ¿©·¯¹ø ÇÒ ÇÊ¿ä ¾øÀÌ ÇÑÁÙ·Î ´Ù Àû¾îÁÜ
+	public String toString() { //override ì—¬ëŸ¬ë²ˆ í•  í•„ìš” ì—†ì´ í•œì¤„ë¡œ ë‹¤ ì ì–´ì¤Œ
 		return this.productName + "(" + this.price + ") : " + this.count;
 	}
 	public int getCount() {
@@ -71,7 +71,7 @@ class CanCoffee extends Drink {
 class DrinkManager {
 	Drink[] drink = { new Water(), new Cabo(), new Sujeong(), new Orange(), new CanCoffee() };
 
-	public Drink findDrinkByType(String productName) { //??
+	public Drink findDrinkByType(String productName) {
 		for (int i = 0; i < this.drink.length; i++) {
 			if (this.drink[i].getProductName().equals(productName)) {
 				return this.drink[i];
@@ -92,7 +92,7 @@ class DrinkManager {
 		this.findDrinkByType(productName).setCount(findDrinkByType(productName).getCount() - amount);// -= amount;
 	}
 
-	public ArrayList<Drink> getAvailableProducts(int money) {//
+	public ArrayList<Drink> getAvailableProducts(int money) {
 		ArrayList<Drink> availableDrinks = new ArrayList<Drink>();
 		for (int i = 0; i < this.drink.length; i++) {
 			if (this.drink[i].getPrice() <= money && !this.drink[i].checkIsEmpty()) {
@@ -109,8 +109,7 @@ class Bank {
 	ArrayList<Integer> changeArray = new ArrayList<Integer>();
 	int balance = 0; // The amount of money spent by the user
 
-	Bank() {
-		// Add some change in storedMoney
+	Bank() {// Add some change in storedMoney
 		
 	}
 	
