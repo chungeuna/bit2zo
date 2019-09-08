@@ -1,9 +1,10 @@
-package kr.or.gp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 class Drink {
-	final int MAX_COUNT = 50;
+	static final int MAX_COUNT = 50;
 	int count;
 	int price;
 	String productName;
@@ -70,7 +71,11 @@ class DrinkManager {
 	}
 
 	public void addStock(String productName, int amount) {
-		this.findDrinkByType(productName).count += amount;
+		if (findDrinkByType(productName).count >= Drink.MAX_COUNT) {
+			System.out.println("Stock is full");
+		}else {
+			this.findDrinkByType(productName).count += amount;
+		}
 	}
 
 	public void reduceStock(String productName, int amount) {
@@ -91,23 +96,20 @@ class DrinkManager {
 class Bank {
 	ArrayList<Integer> temporaryMoney = new ArrayList<Integer>(); // Money inserted by the user
 	ArrayList<Integer> storedMoney = new ArrayList<Integer>(); // Money in the vending machine
+	ArrayList<Integer> changeArray = new ArrayList<Integer>();
 	int balance = 0; // The amount of money spent by the user
 
 	Bank() {
 		// Add some change in storedMoney
-		this.storedMoney.add(100);
-		this.storedMoney.add(500);
-		this.storedMoney.add(500);
-		this.storedMoney.add(100);
-		this.storedMoney.add(100);
-		this.storedMoney.add(100);
+		
 	}
-
+	
 	public int getAvailableStoredFunds() {//
 		int sum = 0;
 		for (int i = 0; i < this.storedMoney.size(); i++) {
 			sum += this.storedMoney.get(i);
 		}
+		sum -= changeArray.get(0);
 		return sum;
 	}
 
@@ -130,10 +132,11 @@ class Bank {
 
 		System.out.println("Change is " + change);
 		this.balance = 0;
-
+		
 		//If you want to make it return the number of bills and coins - use code below
-		ArrayList<Integer> changeArray = new ArrayList<Integer>();
-		return changeArray;
+		//ArrayList<Integer> changeArray = new ArrayList<Integer>();
+		changeArray.add(change);
+		return this.changeArray;
 	}
 
 	public void addToTemporaryMoney(int money) {
