@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 class Drink {
 	static final int MAX_COUNT = 50;
-	private int count;
-	private int price;
-	private String productName;
+	int count;
+	int price;
+	String productName;
 
 	Drink(String name, int count, int price) {
 		this.productName = name;
@@ -21,7 +21,7 @@ class Drink {
 		}
 	}
 
-	public String toString() { //override ì—¬ëŸ¬ë²ˆ í•  í•„ìš” ì—†ì´ í•œì¤„ë¡œ ë‹¤ ì ì–´ì¤Œ
+	public String toString() { //override ¿©·¯¹ø ÇÒ ÇÊ¿ä ¾øÀÌ ÇÑÁÙ·Î ´Ù Àû¾îÁÜ
 		return this.productName + "(" + this.price + ") : " + this.count;
 	}
 }
@@ -61,7 +61,7 @@ class DrinkManager {
 
 	public Drink findDrinkByType(String productName) {
 		for (int i = 0; i < this.drink.length; i++) {
-			if (this.drink[i].getProductName().equals(productName)) {
+			if (this.drink[i].productName.equals(productName)) {
 				return this.drink[i];
 			}
 		}
@@ -69,21 +69,21 @@ class DrinkManager {
 	}
 
 	public void addStock(String productName, int amount) {
-		if (findDrinkByType(productName).getCount() >= Drink.MAX_COUNT) {
+		if (findDrinkByType(productName).count >= Drink.MAX_COUNT) {
 			System.out.println("The stock is full");
 		}else {
-			this.findDrinkByType(productName).setCount(findDrinkByType(productName).getCount() + amount);// += amount;
+			this.findDrinkByType(productName).count += amount;
 		}
 	}
 
 	public void reduceStock(String productName, int amount) {
-		this.findDrinkByType(productName).setCount(findDrinkByType(productName).getCount() - amount);// -= amount;
+		this.findDrinkByType(productName).count -= amount;
 	}
 
 	public ArrayList<Drink> getAvailableProducts(int money) {
 		ArrayList<Drink> availableDrinks = new ArrayList<Drink>();
 		for (int i = 0; i < this.drink.length; i++) {
-			if (this.drink[i].getPrice() <= money && !this.drink[i].checkIsEmpty()) {
+			if (this.drink[i].price <= money && !this.drink[i].checkIsEmpty()) {
 				availableDrinks.add(this.drink[i]);
 			}
 		}
@@ -270,11 +270,11 @@ public class VendingMachine {
 		if (targetDrink == null) {
 			System.out.println("Invalid product name");
 		} else {
-			if (targetDrink.getPrice() > this.bank.getAvailableUserFunds()) {
+			if (targetDrink.price > this.bank.getAvailableUserFunds()) {
 				System.out.println("Insufficient funds");
 			} else {
 				this.dm.reduceStock(userInput, 1);
-				this.bank.balance += targetDrink.getPrice();
+				this.bank.balance += targetDrink.price;
 			}
 		}
 	}
