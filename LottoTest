@@ -1,0 +1,122 @@
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Lotto {
+	Lotto () {
+	}
+	
+	public int ran() {
+		int num = (int)(Math.random()*45) +1;
+		return num;
+	}
+	
+	public String tranToStr(int n) {
+		String srt = "";
+		srt=String.valueOf(n);
+		return srt;
+	}
+	
+	public HashSet<Integer> creatNum() {
+		HashSet<Integer> hset = new HashSet<Integer>();	
+		while(hset.size() <6) {
+			int ranNum = (int)(Math.random()*45) +1;
+			hset.add(ranNum);
+		}		
+		return hset;
+	}
+	
+	public List sortHashset (HashSet<Integer> hint) {
+		List list = new ArrayList<Integer>(hint);
+		Collections.sort(list);
+		return list;
+	}
+	
+	public ArrayList<String> tranToString (List l) {
+		ArrayList<String> slist = new ArrayList<String>();
+		for(int i =0; i <l.size(); i++) {
+			slist.add((String) l.get(i));
+		}
+		return slist;
+	}
+	
+	
+	
+	
+	
+	public void print(HashSet hs) {
+		System.out.println(hs);
+		
+	}
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+public class LottoTest {
+
+	public static void main(String[] args) throws Exception {
+		Lotto lt = new Lotto();
+		lt.creatNum();
+		HashSet<Integer> hsint = lt.creatNum();
+		List mylist = lt.sortHashset(hsint);
+		System.out.println(mylist.get(0));
+		
+		ArrayList<String> strlist = new ArrayList<String>();
+		for(int i=0; i<6; i++) {
+			int n = (int)mylist.get(i);
+			String my = String.valueOf(n);
+			strlist.add(my);
+		}
+		
+		
+		
+		FileWriter fos;
+		BufferedWriter bos;
+		
+		
+		String path = "c:\\IOTemp\\Lotto.txt";
+	
+		
+		fos = new FileWriter(path,true);
+		bos = new BufferedWriter(fos);
+		
+		
+		
+		
+		String str2 ="";
+		//for(int i=0; i<6; i++) {
+			//int data =0;
+		str2 = String.valueOf((int)(Math.random()*45) +1);
+			
+		//	bos.write(str2);
+		//}
+		ArrayList<String> slist = new ArrayList<String>();
+		
+		
+		
+		String lottoFormat = " 2조 로또 파일\n[{0},{1},{2},{3},{4},{5}]\n";
+		String result =MessageFormat.format(lottoFormat,strlist.get(0),strlist.get(1),strlist.get(2),strlist.get(3),strlist.get(4),strlist.get(5));
+		
+		bos.write(result);
+		
+		
+		bos.flush();
+		
+	}
+}
